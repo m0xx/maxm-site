@@ -3,17 +3,33 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 import { rhythm } from '../utils/typography'
+import Tags from '../components/Tags';
 
 class BlogIndex extends React.Component {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const projects = get(this, 'props.data.allMarkdownRemark.edges')
+    const {props} = this
+    const siteTitle = get(props, 'data.site.siteMetadata.title')
+    const projects = get(props, 'data.allMarkdownRemark.edges')
 
     return (
       <div>
         <Helmet title={siteTitle} />
         {projects.map(project => {
-          return <div>{get(project, 'node.frontmatter.title')}</div>
+          const {title, tags, website} = project.node.frontmatter;
+
+          return <div>
+              <h3 style={{marginBottom: '1rem'}}>{ title }</h3>
+             <div dangerouslySetInnerHTML={{ __html: get(project, 'node.html') }}></div>
+            <div><Tags tags={tags.split(',').map((tag) => tag.trim())} /></div>
+            <br/>
+              {website &&  <div style={{
+                      textAlign: 'right'
+                  }}>
+                    <a target="_blank" href={website}>Voir le projet</a>
+                  </div>
+              }
+
+          </div>
         })}
       </div>
     )
@@ -38,7 +54,9 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
+            tags
             date
+            website
           }
           html
         }
