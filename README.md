@@ -1,2 +1,2 @@
-# maxm-site
+# maxm.ca
 My personal portfolio
