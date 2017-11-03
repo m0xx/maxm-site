@@ -35,7 +35,7 @@ class Template extends React.Component {
             }}
             to={'/'}
           >
-            Maxm Porfolio
+            Maxime Morin
           </Link>
         </h1>
         {children()}

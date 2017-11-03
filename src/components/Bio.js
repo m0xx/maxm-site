@@ -1,6 +1,5 @@
 import React from 'react'
 
-// Import typefaces
 import 'typeface-montserrat'
 import 'typeface-merriweather'
 
@@ -17,20 +16,19 @@ class Bio extends React.Component {
       >
         <img
           src={profilePic}
-          alt={`Kyle Mathews`}
+          alt={`Maxime Morin`}
           style={{
             float: 'left',
             marginRight: rhythm(1 / 4),
             marginBottom: 0,
             width: rhythm(2),
             height: rhythm(2),
+            borderRadius: '50%',
           }}
         />
-        Written by <strong>Kyle Mathews</strong> who lives and works in San
-        Francisco building useful things.{' '}
-        <a href="https://twitter.com/kylemathews">
-          You should follow him on Twitter
-        </a>
+        Développeur web du <strong>Saguenay</strong>, je mange du{' '}
+        <strong>javascript</strong> pour déjeuner, diner et souper!{' '}
+        <a href="mailto:maxime.morin2@gmail.com">Écrivez moi</a>
       </p>
     )
   }
